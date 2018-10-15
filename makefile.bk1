@@ -1,0 +1,23 @@
+
+OBJ = main.o Observer.o SheetObserver.o Subject.o
+SRC = ./src/
+INC = ./inc/
+
+OBS: $(OBJ)
+
+	cc -o OBS $(OBJ) 
+
+
+main.o: $(SRC)main.c $(INC)Observer.h $(INC)SheetObserver.h
+	cc -c $(SRC)main.c
+Observer.o: $(SRC)Observer.c $(INC)observer.h
+	cc -c $(SRC)Observer.c
+SheetObserver.o: $(SRC)SheetObserver.c $(INC)SheetObserver.h
+	cc -c $(SRC)SheetObserver.c 
+Subject.o: $(SRC)Subject.c  $(INC)Subject.h
+	cc -c $(SRC)Subject.c 
+
+.PHONY: clean
+clean:
+	-rm OBS $(OBJ)
+
